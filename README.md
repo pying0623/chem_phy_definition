@@ -1,7 +1,7 @@
 # SPM Physics & Chemistry Definition Practice
 Infinity Tuition Centre · F4 / F5 · BI / BM
 
-Static web page (no build step). Flow: password → language → form → subject → chapter → Study / Quiz.
+Static web page (no build step). Flow: password → language → subject → form → chapter → Study / Quiz.
 
 ## Files
 - `index.html` – page shell

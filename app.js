@@ -8,18 +8,18 @@ const t=()=>T[S.lang];
 function items(){const L=D[S.sub][S.form];const cs=S.ch==="all"?L:[L[S.ch]];return cs.flatMap(c=>c[S.lang])}
 function back(){return `<button class="back" onclick="go('back')">${t().back}</button>`}
 function go(a){
- if(a==="back"){if(S.ch!==null){S.ch=null}else if(S.sub){S.sub=null}else if(S.form){S.form=null}else{S.lang=null}S.mode="study";render();return}
+ if(a==="back"){if(S.ch!==null){S.ch=null}else if(S.form){S.form=null}else if(S.sub){S.sub=null}else{S.lang=null}S.mode="study";render();return}
  if(a==="home"){S.lang=S.form=S.sub=S.ch=null;S.mode="study";render()}
 }
 function pick(k,v){S[k]=v;S.mode="study";S.rev=false;render();window.scrollTo(0,0)}
 function head(){
- const p=[];if(S.lang)p.push(S.lang==="bi"?"BI":"BM");if(S.form)p.push(S.form);if(S.sub)p.push(t()[S.sub]);
+ const p=[];if(S.lang)p.push(S.lang==="bi"?"BI":"BM");if(S.sub)p.push(t()[S.sub]);if(S.form)p.push(S.form);
  return `<h1>Infinity Tuition Centre · SPM</h1><div class="crumb">${p.join(" › ")}</div>`}
 function render(){
  let h="";
  if(!S.lang){
   h=`<h1>Infinity Tuition Centre · SPM</h1><p class="sub">Definition Practice · Latihan Definisi</p><h2>Language / Bahasa</h2><div class="grid"><button class="big" onclick="pick('lang','bi')"><b>English (BI)</b><span>Physics &amp; Chemistry</span></button><button class="big" onclick="pick('lang','bm')"><b>Bahasa Melayu (BM)</b><span>Fizik &amp; Kimia</span></button></div>`;
- }else if(!S.form){
+ }else if(S.sub&&!S.form){
   h=head()+back()+`<h2>${t().form}</h2><div class="grid"><button class="big" onclick="pick('form','F4')"><b>${S.lang==="bi"?"Form 4":"Tingkatan 4"}</b></button><button class="big" onclick="pick('form','F5')"><b>${S.lang==="bi"?"Form 5":"Tingkatan 5"}</b></button></div>`;
  }else if(!S.sub){
   h=head()+back()+`<h2>${t().subj}</h2><div class="grid"><button class="big" onclick="pick('sub','PHY')"><b>${t().PHY}</b></button><button class="big" onclick="pick('sub','CHE')"><b>${t().CHE}</b></button></div>`;
